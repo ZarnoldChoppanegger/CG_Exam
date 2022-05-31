@@ -57,14 +57,16 @@ Global illumination models try to account for indirect light, by solving the ren
 
 The basic idea of accelerating ray tracing when many polygons present, is to reduce the  number of ray intersection checks that need to be performed. Some techniques are as follows:
 
-*Bounding volumes*: enclose the complex mesh in a simpler geometry, like a cube or sphere, and check if the ray first intersects with that one rather than with every polygon in the mesh.
-*Space partitioning*: divides the space in disjoint subsets. The methods can be k-d trees, octtrees or bsp trees. The ray intersection is performed only with the polygons that are in the same region.
+- *Bounding volumes*: enclose the complex mesh in a simpler geometry, like a cube or sphere, and check if the ray first intersects with that one rather than with every polygon in the mesh.
+- *Space partitioning*: divides the space in disjoint subsets. The methods can be k-d trees, octtrees or bsp trees. The ray intersection is performed only with the polygons that are in the same region.
 
 ## Describe the basic idea and purpose of texture mipmapping.
 
 Many times, a pixel does not correspond to a texel. We then have two scenarios:
-*Magnification*: a texel is represented by many pixels.
-*Minification*: a pixel contains many texels.
+
+- *Magnification*: a texel is represented by many pixels.
+- *Minification*: a pixel contains many texels.
+
 The latter case will introduce *aliasing* problems.
 Mipmapping solves this problem by filtering down the texture at different levels, in smaller images. During rendering, for distant objects, textures with high mipmap levels will be selected, and vice versa for closer objects.
 
