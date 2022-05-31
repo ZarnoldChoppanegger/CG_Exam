@@ -73,7 +73,7 @@ Bump and normal mapping add detail to a model by perturbing its surface normals.
 
 Bump mapping makes use of a grey-mapped texture containing the height values. Thus, *in the shader*, for every point it is needed to compute the surface normal. Normal mapping on the other hand uses a RGB texture containing the precomputed values of the normals. So bump mapping has less memory overhead but it's computationally more intensive.
 
-## Derive a 4×4 matrix M, representing a transformation that mirrors all points in a plane defined by a point p = (px, py, pz) and the normal vector (0, 1, 0).
+## Derive a 4×4 matrix M, representing a transformation that mirrors all points in a plane defined by a point p = (px, py, pz) and the normal vector (0, 1, 0).
 
 We know that the normal in the y axis, thus if we want to take any point on the plane to the plane centered in the origin, we need to translate by -p_y.
 
@@ -129,7 +129,13 @@ so p = M * c
 
 ## Describe the basic idea behind volume rendering with GPU-accelerated ray-casting
 
-Given a 3d space containing voxels (gathered from real life scans or procedurally generated), cast rays through the volume and sample information along the way (i.e. color, intensity etc...). Average the sampled information and displayit.
+Given a 3d space containing voxels (gathered from real life scans or procedurally generated), cast rays through the volume and sample information along the way (i.e. color, intensity etc...). Average the sampled information and display it.
 
 ## A Gaussian filter smooths an image using convolution with a 2D filter kernel. Briefly describe (in 3-4 steps) how you would implement this type of 2D image filter as a post-processing effect, using the programmable graphics pipeline and render-to-texture functionality.
 
+Post-processing effects require to use user defined frame buffers (FBOs) instead of the default one. Applying a post-processing effect can be done in the following way:
+- render the scene on a texture
+- bind the texture to a FBO
+- define a quad and map the texture to it
+- in the fragment shader apply the desired effect, in this case the convolution of the Gaussian filter
+- unbind the FBO and render the scene
