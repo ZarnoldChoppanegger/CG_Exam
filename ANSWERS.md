@@ -30,7 +30,7 @@ using linear interpolation, compute the normals for every point across the edges
 apply the phong illumination model to every point in the polygon using their respective normals
 Goraud is computationally faster than Phong shading, because the illumination model is applied only at the vertices. On the other hand, Goraud doesn't give believable results when dealing with specular reflections that generate intense highlights. On the other hand, Phong gives much better results with the downside of being more costly.
 
-## Describe the following two algorithms for hidden surface removal, and discuss their respective advantages and disadvantages:
+## Describe the following two algorithms for hidden surface removal, and discuss their respective advantages and disadvantages:
 
 ### Painter's algorithm
 It can be summarized in the following steps:
@@ -59,6 +59,7 @@ The basic idea of accelerating ray tracing when many polygons present, is to red
 
 *Bounding volumes*: enclose the complex mesh in a simpler geometry, like a cube or sphere, and check if the ray first intersects with that one rather than with every polygon in the mesh.
 *Space partitioning*: divides the space in disjoint subsets. The methods can be k-d trees, octtrees or bsp trees. The ray intersection is performed only with the polygons that are in the same region.
+
 ## Describe the basic idea and purpose of texture mipmapping.
 
 Many times, a pixel does not correspond to a texel. We then have two scenarios:
@@ -110,7 +111,7 @@ up_x               up_y                up_z              
 direction_x  direction_y  direction_z  0                   0 0 1 -p_z
 0                        0                       0                      1                   0 0 0     1
 
-## Derive the coefficients for a third degree polynomial curve that interpolates four given control points p0, p1, p2, p3. (Note: You do not need to provide the exact numeric values for the coefficients, just a derivation of how they can be calculated. Specifically, you do not need to perform any explicit matrix inversion
+## Derive the coefficients for a third degree polynomial curve that interpolates four given control points p0, p1, p2, p3. (Note: You do not need to provide the exact numeric values for the coefficients, just a derivation of how they can be calculated. Specifically, you do not need to perform any explicit matrix inversion
 
 p(u) = c_0 + c_1u + c_2u^2 + c_3u^3
 
